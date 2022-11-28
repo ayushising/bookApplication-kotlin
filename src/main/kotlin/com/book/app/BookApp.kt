@@ -7,14 +7,24 @@ fun main() {
     while(true){
         println("***************WELCOME TO BOOK STORE*********************")
         println("=============Enter Your Choice=================")
-        println("1.Insert  2.Delete  3.Diplay  4.Search Author 5.Search  Title 6.Search Id  7.ModifyBook 8.Exit")
-        println("enter value:")
+        
+        println("1.Insert  Book")
+        println("2.Delete Book")  
+        println("3.Diplay ")  
+        println("4.Search Author")
+        prinltn("5.Search  Title")
+        println("6.Search Id")
+        println("7.ModifyBook")
+        println("8.Exit")
+        
+        
+        println("Enter values:")
         var sc=Scanner(System.`in`)
         var value=sc.nextInt()
         when(value) {
             1 -> {
                 println("Enter values:")
-                bookStore.addBook(getvalues("insert"))
+                bookStore.addBook(getvalues("Insert Book"))
             }
 
             2 -> {
@@ -28,68 +38,31 @@ fun main() {
             }
             4 -> {
                 println("The given Author book Details:")
-                bookStore.searchByAuthor(getvalues("searchByAuthor").author)
+                bookStore.searchByAuthor(getvalues("Search Author").author)
                 println("=======================================")
 
             }
             5->{
                 println("The given Title book Details:")
-                bookStore.searchByTitle(getvalues("searchByTitle").title)
+                bookStore.searchByTitle(getvalues("Searc title").title)
                 println("=======================================")
             }
             6->{
                 println("The given bookid book Details:")
-                bookStore.searchBybookId(getvalues("searchBybookId").bookId)
+                bookStore.searchBybookId(getvalues("Search bookId").bookId)
                 println("=======================================")
             }
             7->{
                 println("Enter values to modify:")
-                bookStore.modifyBook(getvalues("modify"))
+                bookStore.modifyBook(getvalues("Modify Book"))
             }
             else -> {
-                println("===========Execution completed===========")
+                println("===========Done===========")
                 break
             }
         }
     }
 
 }
-fun getvalues(action:String):Book{
-    var sc=Scanner(System.`in`)
 
-    if(action=="insert"||action=="modify")
-    {
-        println("bookId:")
-        var bookId=sc.next()
-        println("Title:")
-        var title=sc.next()
-        println("Author:")
-        var author=sc.next()
-        println("Category:")
-        var category=sc.next()
-        println("price:")
-        var price=sc.nextDouble()
-        return Book(bookId,title,author,category,price)
-    }
-    else{
-        if(action=="Search Author"){
-            println("Author:")
-            var author=sc.next()
-            return Book("","",author,"",0.0)
-        }
-        else if(action=="delete"|| action=="Search Id"){
-            println("bookId:")
-            var bookId=sc.next()
-            return Book(bookId,"","","",0.0)
-        }
-        else if(action=="Search Title"){
-            println("Title:")
-            var title=sc.next()
-            return Book("",title,"","",0.0)
-        }
-        else{
-            return Book("","","","",0.0)
-        }
-
-    }
 }
